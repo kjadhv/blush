@@ -29,7 +29,7 @@ export default function Dashboard({ user }) {
 
   const name = user?.displayName || "Friend";
   const userRef = doc(db, "users", user.uid);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   // ── Load saved boards from Firebase ──────────────────────────
   useEffect(() => {
     const load = async () => {
