@@ -135,7 +135,15 @@ export default function Dashboard({ user }) {
               sub={sub}
               i={i}
               onLongPress={() => !s.isDefault && setDeleteModal(s)}
-              onClick={() => navigate(`/board/${s.id}`)}
+              onClick={() => {
+  if (s.id === "recipes")  navigate("/recipes");
+  else if (s.id === "expenses") navigate("/expenses");
+  else if (s.id === "wishlist") navigate("/wishlist");
+  else if (s.id === "mood")     navigate("/mood");
+  else if (s.id === "schedule") navigate("/schedule");
+  else if (s.id === "workouts") navigate("/workouts");
+  else navigate(`/board/${s.id}`); // custom boards
+}}
             />
           ))
         )}

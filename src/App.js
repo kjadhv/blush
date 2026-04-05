@@ -7,7 +7,9 @@ import Hello     from "./pages/Hello";
 import Auth      from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import ChatPage  from "./pages/ChatPage";
-
+import RecipesPage  from "./pages/RecipesPage";
+import RecipeDetail from "./pages/RecipeDetail";
+import ExpensesPage from "./pages/ExpensesPage";
 export default function App() {
   const [user,    setUser]    = useState(undefined);
   const [loading, setLoading] = useState(true);
@@ -36,6 +38,9 @@ export default function App() {
         <Route path="/chat/:phone"   element={user ? <ChatPage /> : <Navigate to="/auth" />} />
         <Route path="/board/:id" element={user ? <BoardPage /> : <Navigate to="/auth" />} />
         <Route path="*"              element={<Navigate to="/" />} />
+        <Route path="/recipes"     element={<RecipesPage />} />
+<Route path="/recipes/:id" element={<RecipeDetail />} />
+<Route path="/expenses" element={<ExpensesPage />} />
       </Routes>
     </BrowserRouter>
   );
