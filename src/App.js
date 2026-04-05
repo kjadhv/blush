@@ -7,6 +7,7 @@ import Hello     from "./pages/Hello";
 import Auth      from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import ChatPage  from "./pages/ChatPage";
+import BoardPage from "./pages/BoardPage";
 
 export default function App() {
   const [user,    setUser]    = useState(undefined);
@@ -30,27 +31,18 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/"              element={<Hello />} />
-        <Route path="/auth"          element={user ? <Navigate to="/dashboard" /> : <Auth />} />
-        <Route path="/dashboard"     element={user ? <Dashboard user={user} /> : <Navigate to="/auth" />} />
-        <Route path="/chat/:phone"   element={user ? <ChatPage /> : <Navigate to="/auth" />} />
-        <Route path="*"              element={<Navigate to="/" />} />
+        <Route path="/"            element={<Hello />} />
+        <Route path="/auth"        element={user ? <Navigate to="/dashboard" /> : <Auth />} />
+        <Route path="/dashboard"   element={user ? <Dashboard user={user} /> : <Navigate to="/auth" />} />
+        <Route path="/chat/:phone" element={user ? <ChatPage /> : <Navigate to="/auth" />} />
+        <Route path="/board/:id"   element={user ? <BoardPage /> : <Navigate to="/auth" />} />
+        <Route path="*"            element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 const S = {
-  splash: {
-    minHeight:"100vh", display:"flex",
-    alignItems:"center", justifyContent:"center",
-    background:"linear-gradient(135deg,#fce4ec,#fce7f3)",
-  },
-  spinner: {
-    width:40, height:40,
-    border:"3px solid #fbcfe8",
-    borderTop:"3px solid #ec4899",
-    borderRadius:"50%",
-    animation:"spin 0.8s linear infinite",
-  },
+  splash:  { minHeight:"100vh", display:"flex", alignItems:"center", justifyContent:"center", background:"linear-gradient(135deg,#fce4ec,#fce7f3)" },
+  spinner: { width:40, height:40, border:"3px solid #fbcfe8", borderTop:"3px solid #ec4899", borderRadius:"50%", animation:"spin 0.8s linear infinite" },
 };

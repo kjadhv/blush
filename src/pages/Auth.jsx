@@ -91,7 +91,7 @@ err.code === "auth/too-many-requests"    ? "Too many attempts. Try again later."
         <div style={S.header}>
           <div style={S.logo}>🌸</div>
           <h1 style={S.title}>Blush</h1>
-          <p style={S.sub}>{isLogin ? "Welcome back 💕" : "Join Blush today ✨"}</p>
+          <p style={S.sub}>{isLogin ? "Welcome back " : "Join Blush today ✨"}</p>
         </div>
 
         {/* Toggle */}
