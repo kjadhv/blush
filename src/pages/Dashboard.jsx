@@ -45,7 +45,7 @@ export default function Dashboard({ user }) {
       }
     };
     load();
-  }, [user.uid]);
+  }, [user.uid, userRef]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Save new board to Firebase ────────────────────────────────
   const handleAddText = async (txt) => {
