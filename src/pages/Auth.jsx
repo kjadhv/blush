@@ -37,7 +37,7 @@ if (!isLogin && !/^[6-9]\d{9}$/.test(phone.replace(/^(\+91|91)/, "").replace(/\s
     try {
       if (isLogin) {
         // ── Login ──────────────────────────────────────────────
-        await signInWithEmailAndPassword(auth, email.trim(), pass);
+        await signInWithEmailAndPassword(auth, email.trim().toLowerCase(), pass);
         navigate("/dashboard", { replace: true });
 
       } else {
@@ -61,8 +61,10 @@ if (!isLogin && !/^[6-9]\d{9}$/.test(phone.replace(/^(\+91|91)/, "").replace(/\s
         err.code === "auth/user-not-found"    ? "No account found. Sign up first." :
         err.code === "auth/wrong-password"    ? "Incorrect password." :
         err.code === "auth/email-already-in-use" ? "Email already registered. Log in." :
-        err.code === "auth/invalid-email"     ? "Invalid email address." :
-        "Something went wrong. Try again.";
+        err.code === "auth/invalid-email"        ? "Invalid email address." :
+err.code === "auth/invalid-credential"   ? "Incorrect email or password." :
+err.code === "auth/too-many-requests"    ? "Too many attempts. Try again later." :
+`Something went wrong: ${err.code}`;
       showToast(msg);
     } finally {
       setLoading(false);
