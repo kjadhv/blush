@@ -4,7 +4,7 @@ import { db, auth } from "../firebase";
 import {
   collection, addDoc, getDocs, query, where,
   deleteDoc, doc, serverTimestamp, updateDoc,
-  arrayUnion, getDoc, setDoc
+  arrayUnion
 } from "firebase/firestore";
 
 // ─── Preset categories with emoji + color ─────────────────────────────────────

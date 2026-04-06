@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase";
 import {
   collection, addDoc, getDocs, query,
-  where, deleteDoc, doc, serverTimestamp, orderBy, updateDoc
+  where, deleteDoc, doc, serverTimestamp, updateDoc
 } from "firebase/firestore";
 
 // ─── Cloudinary config ────────────────────────────────────────────────────────
