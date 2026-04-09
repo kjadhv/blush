@@ -36,7 +36,7 @@ export default function MoodPage() {
   const [myData,     setMyData]     = useState({});
   const [herData,    setHerData]    = useState({});
   const [herEmail,   setHerEmail]   = useState(null);
-  const [herUid,     setHerUid]     = useState(null);
+
   const [herName,    setHerName]    = useState("Sister");
   const [loadingMe,  setLoadingMe]  = useState(true);
   const [loadingHer, setLoadingHer] = useState(true);
@@ -74,7 +74,7 @@ export default function MoodPage() {
         if (!snap.empty) {
           const hUser = snap.docs[0].data();
           const uid   = snap.docs[0].id;
-          setHerUid(uid);
+      
           setHerName(hUser.name || herEmail.split("@")[0]);
           const mSnap = await getDoc(doc(db, "moods", uid));
           if (mSnap.exists()) setHerData(mSnap.data().entries || {});
