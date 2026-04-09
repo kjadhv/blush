@@ -1,3 +1,4 @@
+import { useEffect } from "react"; // ← add this
 import { useParams, useNavigate } from "react-router-dom";
 
 const BOARD_INFO = {
@@ -12,6 +13,14 @@ const BOARD_INFO = {
 export default function BoardPage() {
   const { id }   = useParams();
   const navigate = useNavigate();
+
+// Redirect specific boards to their real pages
+  useEffect(() => {
+  if (id === "mood")     navigate("/mood",     { replace: true });
+  if (id === "expenses") navigate("/expenses", { replace: true });
+  if (id === "recipes")  navigate("/recipes",  { replace: true });
+  if (id === "wishlist") navigate("/wishlist", { replace: true });
+}, [id, navigate]);
 
   const info = BOARD_INFO[id] || {
     emoji: "📝",

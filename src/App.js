@@ -10,6 +10,9 @@ import ChatPage  from "./pages/ChatPage";
 import RecipesPage  from "./pages/RecipesPage";
 import RecipeDetail from "./pages/RecipeDetail";
 import ExpensesPage from "./pages/ExpensesPage";
+import WishlistPage from "./pages/WishlistPage";
+import MoodPage from "./pages/MoodPage";
+
 export default function App() {
   const [user,    setUser]    = useState(undefined);
   const [loading, setLoading] = useState(true);
@@ -32,16 +35,18 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/"              element={<Hello />} />
-        <Route path="/auth"          element={user ? <Navigate to="/dashboard" /> : <Auth />} />
-        <Route path="/dashboard"     element={user ? <Dashboard user={user} /> : <Navigate to="/auth" />} />
-        <Route path="/chat/:phone"   element={user ? <ChatPage /> : <Navigate to="/auth" />} />
-        <Route path="/board/:id" element={user ? <BoardPage /> : <Navigate to="/auth" />} />
-        <Route path="*"              element={<Navigate to="/" />} />
-        <Route path="/recipes"     element={<RecipesPage />} />
-<Route path="/recipes/:id" element={<RecipeDetail />} />
-<Route path="/expenses" element={<ExpensesPage />} />
-      </Routes>
+  <Route path="/"            element={<Hello />} />
+  <Route path="/auth"        element={user ? <Navigate to="/dashboard" /> : <Auth />} />
+  <Route path="/dashboard"   element={user ? <Dashboard user={user} /> : <Navigate to="/auth" />} />
+  <Route path="/chat/:phone" element={user ? <ChatPage /> : <Navigate to="/auth" />} />
+  <Route path="/board/:id"   element={user ? <BoardPage /> : <Navigate to="/auth" />} />
+  <Route path="/recipes"     element={user ? <RecipesPage /> : <Navigate to="/auth" />} />
+  <Route path="/recipes/:id" element={user ? <RecipeDetail /> : <Navigate to="/auth" />} />
+  <Route path="/expenses"    element={user ? <ExpensesPage /> : <Navigate to="/auth" />} />
+  <Route path="/wishlist"    element={user ? <WishlistPage /> : <Navigate to="/auth" />} />
+  <Route path="/mood"        element={user ? <MoodPage /> : <Navigate to="/auth" />} />
+  <Route path="*"            element={<Navigate to="/" />} />
+</Routes>
     </BrowserRouter>
   );
 }
